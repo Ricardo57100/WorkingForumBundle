@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 /**
  * Class PostType
@@ -26,7 +27,7 @@ class PostType extends AbstractType
         $builder
             ->add(
                 'content',
-                TextareaType::class,
+                CKEditorType::class,
                 [
                     'translation_domain' => 'YosimitsoWorkingForumBundle',
                     'label' => 'forum.content',
@@ -43,7 +44,7 @@ class PostType extends AbstractType
                     'label' => false
                 ]
             );
-        
+
         if ($options['canSubscribeThread']) {
             $builder->add('addSubscription',
                 CheckboxType::class,
